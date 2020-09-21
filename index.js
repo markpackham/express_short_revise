@@ -6,6 +6,8 @@ import Products from "./products.js";
 
 const app = Express();
 const port = 3000;
+app.use(Express.json());
+app.use(Express.urlencoded({ extended: true }));
 
 app.get("/products/:id", (req, res) => {
   //res.send("Hello World");
@@ -16,6 +18,10 @@ app.get("/products/:id", (req, res) => {
     })
   );
   //   res.send(req.params.id);
+});
+
+app.post("/add", (req, res) => {
+  res.send(req.body);
 });
 
 // use the http.rest file to send a GET
