@@ -9,7 +9,14 @@ const port = 3000;
 app.use(Express.json());
 app.use(Express.urlencoded({ extended: true }));
 
-app.get("/products/:id", (req, res) => {
+// our middleware function
+function mid(req, res, next) {
+  console.log(req.query);
+  console.log(req.params);
+  next();
+}
+
+app.get("/products/:id", mid, (req, res) => {
   //res.send("Hello World");
   //   res.json(Products);
   res.json(
