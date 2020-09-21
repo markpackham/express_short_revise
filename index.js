@@ -7,9 +7,15 @@ import Products from "./products.js";
 const app = Express();
 const port = 3000;
 
-app.get("/", (req, res) => {
+app.get("/products/:id", (req, res) => {
   //res.send("Hello World");
-  res.json(Products);
+  //   res.json(Products);
+  res.json(
+    Products.find((product) => {
+      return parseInt(req.params.id) === product.id;
+    })
+  );
+  //   res.send(req.params.id);
 });
 
 // use the http.rest file to send a GET
