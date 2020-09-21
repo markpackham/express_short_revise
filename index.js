@@ -21,7 +21,9 @@ app.get("/products/:id", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
-  res.send(req.body);
+  console.log(req.body.id);
+  //   res.send(req.body);
+  res.sendStatus(200);
 });
 
 // use the http.rest file to send a GET
